@@ -1,19 +1,25 @@
-#!/usr/bin/python
+import requests
 import MySQLdb
 
-db = MySQLdb.connect(host="mysql.trinhson.com",    # your host, usually localhost
-                     user="caoson",         # your username
-                     passwd="hikzDFBB",  # your password
-                     db="trinhson_database")        # name of the data base
+def server_func():
+    #!/usr/bin/python
 
-# you must create a Cursor object. It will let
-#  you execute all the queries you need
-cur = db.cursor()
+    db = MySQLdb.connect(host="mysql.trinhson.com",    # your host, usually localhost
+                         user="caoson",         # your username
+                         passwd="hikzDFBB",  # your password
+                         db="trinhson_database")        # name of the data base
 
-# Use all the SQL you like
-cur.execute("SELECT * FROM robot_record")
+    # you must create a Cursor object. It will let
+    #  you execute all the queries you need
+    cur = db.cursor()
 
-myresult = cur.fetchall()
+    # Use all the SQL you like
+    cur.execute("SELECT * FROM robot_record")
 
-for x in myresult:
-  print(x)
+    myresult = cur.fetchall()
+
+    for x in myresult:
+      print(x)
+
+server_func()
+
