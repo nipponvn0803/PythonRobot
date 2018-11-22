@@ -1,25 +1,25 @@
-import requests
 import MySQLdb
-
-def server_func():
-    #!/usr/bin/python
-
+import time
+def database_func(cap_time, file_name):
+    #connect to database
     db = MySQLdb.connect(host="mysql.trinhson.com",    # your host, usually localhost
-                         user="caoson",         # your username
-                         passwd="hikzDFBB",  # your password
-                         db="trinhson_database")        # name of the data base
+                             user="caoson",         # your username
+                             passwd="hikzDFBB",  # your password
+                             db="trinhson_database")        # name of the data base
 
-    # you must create a Cursor object. It will let
-    #  you execute all the queries you need
     cur = db.cursor()
-
-    # Use all the SQL you like
+    # insert time and photo name to database
+    cur.execute("INSERT INTO robot_record (time, photo_name) VALUES (%s, %s)", (cap_time, file_name))
+    #select all record after insert
     cur.execute("SELECT * FROM robot_record")
-
+    db.commit()
     myresult = cur.fetchall()
 
+    #print all records
     for x in myresult:
       print(x)
+    #close connection
+    db.close()
 
-server_func()
+
 
