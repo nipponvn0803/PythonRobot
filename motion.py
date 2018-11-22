@@ -9,7 +9,7 @@ from server import database_func
 
 #login to server and go to upload folder                        
 ftp = ftplib.FTP('trinhson.com')
-ftp.login("trinhcaoson","Whoryounow?12")
+ftp.login("username","password")
 ftp.cwd('trinhson.com/uploads')
 
 gpg3_obj = easy.EasyGoPiGo3()
