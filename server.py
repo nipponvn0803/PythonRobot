@@ -3,8 +3,8 @@ import time
 def database_func(cap_time, file_name):
     #connect to database
     db = MySQLdb.connect(host="mysql.trinhson.com",    # your host, usually localhost
-                             user="caoson",         # your username
-                             passwd="hikzDFBB",  # your password
+                             user="username",         # your username
+                             passwd="password",  # your password
                              db="trinhson_database")        # name of the data base
 
     cur = db.cursor()

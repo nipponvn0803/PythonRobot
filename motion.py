@@ -4,12 +4,14 @@ import easygopigo3 as easy
 import picamera
 import ftplib
 import MySQLdb
+#import login credit
+from credit import *
 #import database function
 from server import database_func
 
 #login to server and go to upload folder                        
 ftp = ftplib.FTP('trinhson.com')
-ftp.login("username","password")
+ftp.login(webusername,webpassword)
 ftp.cwd('trinhson.com/uploads')
 
 gpg3_obj = easy.EasyGoPiGo3()
