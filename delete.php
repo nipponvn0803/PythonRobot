@@ -4,7 +4,7 @@
         $username = $user;
         $password = $passwd;
         $database = "trinhson_database";
-        $source = "uploads/$name";
+        $source = 'uploads/$name';
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $database);
@@ -21,7 +21,7 @@
         $id = $_GET['id'];
         $sql = "DELETE FROM robot_record WHERE id=$id";
 
-        if(unlink($source)){
+        if(unlink($source.$_GET['file'])){
             echo "Success";
         }
         else{
