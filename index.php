@@ -31,8 +31,8 @@
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
-        } 
-        
+        }
+
         $sql = "SELECT * FROM robot_record";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -40,7 +40,9 @@
             // output data of each row
             while($row = $result->fetch_assoc()) {
                 $file_encode = rawurlencode($row['photo_name']);
-                echo "<tr><td>".$row["id"]."</td><td>".$row["time"]."</td><td>". " " .'<a href="' . $file_encode . '">'.$row["photo_name"].'</a>'. " " ."</td></tr>";
+                echo "<tr><td>".$row["id"]."</td>
+                <td>".$row["time"]."</td>
+                <td>". " " .'<a href="' . $file_encode . '">'.$row["photo_name"].'</a>'. " " ."</td></tr>";
             }
             echo "</table>";
         } else {
@@ -48,10 +50,10 @@
         }
         $conn->close();
         ?>
-        
+
     </div>
 
 
-    
+
 </body>
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<body onload="showAll()">
+
+<h1>DoorGuardian</h1>
+
+<form action="">
+  <input type="date" id="from_date" onchange="showDate(document.getElementById('from_date').value, document.getElementById('to_date').value)">
+  <input type="date" id="to_date"  onchange="showDate(document.getElementById('from_date').value, document.getElementById('to_date').value)">
+</form>
+<br>
+<div id="txtHint">Database info will be listed here...</div>
+
+<script>
+// show all records in database, run on start page
+function showAll() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+};
+xhttp.open("GET", "all.php", true);
+xhttp.send();
+}
+
+//filter date function
+function showDate(str1, str2) {
+  var xhttp;
+  if (str1 == "" || str2 == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(str1, str2);
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "date.php?from_date=" + str1 + "&to_date=" + str2, true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
