@@ -1,0 +1,89 @@
+body{
+    background-color: #2B2B2B;
+}
+
+.title-container{
+    width: 100%;
+    background-color: #F6F6F6;
+    text-align: center;
+}
+
+.break-line{
+    width: 100%;
+    background-color: #DE1B1B;
+    height: 8px;
+}
+
+.margin-line{
+    width: 100%;
+    background-color: #F6F6F6;
+    height: 30px;
+    margin-bottom: 30px;
+}
+
+#title{
+    font-family: 'Open Sans', sans-serif;
+    color: #2B2B2B;
+    font-size: 80px;
+    line-height: 1.6;
+    transition: all 2s;
+    -webkit-transition: all 2s;
+    margin-top: 0;
+
+}
+
+.date-container{
+    text-align: center;
+}
+
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #2c3e50;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #95a5a6;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border:1px solid #ecf0f1;
+    background:#ecf0f1;
+    padding:5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+.btn-danger{
+    background-color: #DE1B1B;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > th {
+
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td{
+    background-color: #F6F6F6;
+ }
+
+ .table-striped > tbody > tr:nth-child(2n+1) > td{
+    background-color: #E9E581;
+ }
+
+#test{
+    color: #2B2B2B
+    #DE1B1B
+    #F6F6F6
+    #E9E581
+}
