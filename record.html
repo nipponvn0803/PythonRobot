@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html>
-<style>
-table,th,td {
-  border : 1px solid black;
-  border-collapse: collapse;
-}
-th,td {
-  padding: 5px;
-}
-</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Open sans font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="record.css">
+</head>
 <body onload="showAll()">
+<div class="title-container">
+  <h1 id="title">DoorGuardian</h1>
+  <div class="break-line"></div>
+  <div class="margin-line"></div>
+</div>
 
-<h1>DoorGuardian</h1>
+<div class="date-container">
+  <form action="">
+    <input type="date" id="from_date" >
+    <input type="date" id="to_date" >
+    <button type="button" class="btn btn-danger"
+     onclick="showDate(document.getElementById('from_date').value, document.getElementById('to_date').value)">Filter</button>
+  </form>
+</div>
 
-<form action="">
-  <input type="date" id="from_date" onchange="showDate(document.getElementById('from_date').value, document.getElementById('to_date').value)">
-  <input type="date" id="to_date"  onchange="showDate(document.getElementById('from_date').value, document.getElementById('to_date').value)">
-</form>
 <br>
-<div id="txtHint">Database info will be listed here...</div>
+<div class="container">
+  <div id="txtHint">Database info will be listed here...</div>
+</div>
+
 
 <script>
 // show all records in database, run on start page
@@ -57,6 +73,60 @@ function showDate(str1, str2) {
   xhttp.open("GET", "date.php?from_date=" + str1 + "&to_date=" + str2, true);
   xhttp.send();
 }
+
+function deleteID(id) {
+  var xhttp;
+  if (id == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(id);
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "delete.php?id=" + id , true);
+  xhttp.send();
+}
+
+// var editName;
+// var editTime;
+// var editid;
+// var nextTD
+// function editId(id) {
+//   editid = id;
+//   var tr = document.getElementById("id");
+//   nextTD = tr.cells[1].text;
+// }
+//
+// function editTime() {
+//   editTime = document.getElementById("inputTime").value;
+// }
+//
+// function editName() {
+//   editName = document.getElementById("inputName").value;
+// }
+//
+// function editRecord() {
+//
+//   var xhttp;
+//   if (window.XMLHttpRequest) {
+//     // code for modern browsers
+//     xhttp = new XMLHttpRequest();
+//     } else {
+//     // code for IE6, IE5
+//     xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//   }
+//   xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//       document.getElementById("txtHint").innerHTML = this.responseText;
+//     }
+//   };
+//   xhttp.open("GET", "edit.php?id=" + editid + "&editTime=" + editTime + "&editName=" + editName + "&nextTD=" + nextTD, true);
+//   xhttp.send();
+// }
 </script>
 
 </body>

@@ -18,12 +18,17 @@ FROM robot_record WHERE time BETWEEN '{$from_date}' AND '{$to_date}'";
 
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
-    echo "<table><tr><th>ID</th><th>Time</th><th>Name</th></tr>";
+    echo "<table class='table table-striped table-hover custom-table'><tr><th>ID</th><th>Time</th><th>Name</th><th>Action</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        //encode photo_name as url
         $file_encode = rawurlencode($row['photo_name']);
-        echo "<tr><td>".$row["id"]."</td><td>".$row["time"]."</td><td>". " " .'<a href="' . $file_encode . '">'.$row["photo_name"].'</a>'. " " ."</td></tr>";
+        $order = '<td onclick="deleteID('. $row["id"] . ')">';
+        echo "<tr id='{$row["id"]}'><td>".$row["id"]."</td>
+        <td>".$row["time"]."</td>
+        <td>". " " .'<a href="' . $file_encode . '">'.$row["photo_name"].'</a>'. " " ."</td>" 
+         . $order . "Delete</td>
+
+        </tr>";
     }
     echo "</table>";
 } else {

@@ -7,75 +7,55 @@
    // error_reporting(E_ALL);
    // ini_set("display_errors", 1);
 ?>
-
+<!DOCTYPE html>
 <html lang = "en">
 
    <head>
       <title>Login</title>
       <link href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel = "stylesheet">
+      <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 
-      <style>
-         body {
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #ADABAB;
-         }
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+ 
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+ 
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+  
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
 
-         .form-signin {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-            color: #017572;
-         }
-
-         .form-signin .form-signin-heading,
-         .form-signin .checkbox {
-            margin-bottom: 10px;
-         }
-
-         .form-signin .checkbox {
-            font-weight: normal;
-         }
-
-         .form-signin .form-control {
-            position: relative;
-            height: auto;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            padding: 10px;
-            font-size: 16px;
-         }
-
-         .form-signin .form-control:focus {
-            z-index: 2;
-         }
-
-         .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-            border-color:#017572;
-         }
-
-         .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            border-color:#017572;
-         }
-
-         h2{
-            text-align: center;
-            color: #017572;
-         }
-      </style>
-
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--
+      ===============================================================================================
+    -->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--
+      ===============================================================================================
+    -->
    </head>
 
    <body>
 
-      <h2>Enter Username and Password</h2>
+      
       <div class = "container form-signin">
 
          <?php
@@ -90,7 +70,7 @@
                   $_SESSION['timeout'] = time();
                   $_SESSION['username'] = 'caoson';
 
-                  echo 'You have entered valid use name and password';
+                  
                   header('Refresh: 2; URL = record.html');
                }else {
                   $msg = 'Wrong username or password';
@@ -99,24 +79,91 @@
          ?>
       </div> <!-- /container -->
 
-      <div class = "container">
+      <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <div class="login100-pic js-tilt" data-tilt>
+            <img src="images/img-01.png" alt="IMG" />
+          </div>
 
-         <form class = "form-signin" role = "form"
+          <form class="login100-form validate-form"class = "form-signin" role = "form"
             action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
-            ?>" method = "post">
-            <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
-            <input type = "text" class = "form-control"
-               name = "username"
-               required autofocus></br>
-            <input type = "password" class = "form-control"
-               name = "password" required>
-            <button class = "btn btn-lg btn-primary btn-block" type = "submit"
+            ?>" method = "post"  >
+            <span class="login100-form-title"> Member Login </span>
+
+            <div
+              class="wrap-input100"
+              
+            >
+              <input
+                class="input100"
+                type="text"
+                name="username"
+                placeholder="Username"
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Password is required"
+            >
+              <input
+                class="input100"
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </span>
+            </div>
+
+            <div class="container-login100-form-btn">
+              <button class="login100-form-btn" type = "submit"
                name = "login">Login</button>
-         </form>
+            </div>
 
-         Click here to clean <a href = "logout.php" tite = "Logout">Session.
-
+            <div class="text-center p-t-136">
+              <a class="txt2" href="#">
+                Create your Account
+                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
 
+    <!--
+      ===============================================================================================
+    -->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--
+      ===============================================================================================
+    -->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--
+      ===============================================================================================
+    -->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--
+      ===============================================================================================
+    -->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+      $(".js-tilt").tilt({
+        scale: 1.1
+      });
+    </script>
+    <!--
+      ===============================================================================================
+    -->
+    <script src="js/main.js"></script>
    </body>
 </html>

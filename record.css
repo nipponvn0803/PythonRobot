@@ -63,6 +63,7 @@ input[type="date"] {
     padding:5px;
     display: inline-block !important;
     visibility: visible !important;
+    border-radius: 5px;
 }
 
 .btn-danger{
@@ -80,6 +81,11 @@ input[type="date"] {
  .table-striped > tbody > tr:nth-child(2n+1) > td{
     background-color: #E9E581;
  }
+.btn-danger{
+    padding: 10px 12px;
+    line-height: 1.4;
+    vertical-align: top;
+}
 
 #test{
     color: #2B2B2B
