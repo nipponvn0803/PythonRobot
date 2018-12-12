@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         $file_encode = rawurlencode($row['photo_name']);
-        $order = '<td onclick="deleteID('. $row["id"] . ')">';
+        $order = '<td class="delete" onclick="deleteID('. $row["id"] . ')">';
         echo "<tr id='{$row["id"]}'><td>".$row["id"]."</td>
         <td>".$row["time"]."</td>
         <td>". " " .'<a href="' . $file_encode . '">'.$row["photo_name"].'</a>'. " " ."</td>" 
