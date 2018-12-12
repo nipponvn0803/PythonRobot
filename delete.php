@@ -14,17 +14,22 @@
             die("Connection failed: " . $conn->connect_error);
         }
         
-
+        // get id from url
         $id = $_GET['id'];
+        //get record with the same id
         $sql1 = "SELECT * FROM robot_record WHERE id=$id";
         $result1 = $conn->query($sql1);
         $value = $result1->fetch_assoc();
+        //get photo name from query results
         $name = $value['photo_name'];
+        //delete photo from server
         unlink($name);
 
+        // delete record from database
         $sql2 = "DELETE FROM robot_record WHERE id=$id";
         $result2 = $conn->query($sql2);
 
+        // echo updated records
         $sql3 = "SELECT * FROM robot_record";
         $result3 = $conn->query($sql3);
         if ($result3->num_rows > 0) {

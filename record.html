@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Bootstrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -14,6 +15,7 @@
 
   <link rel="stylesheet" href="record.css">
 </head>
+<!-- onload show all records from all.php-->
 <body onload="showAll()">
 <div class="title-container">
   <h1 id="title">DoorGuardian</h1>
@@ -23,16 +25,20 @@
 
 <div class="date-container">
   <form action="">
+    <!-- Date input for filter -->
     <input type="date" id="from_date" >
     <input type="date" id="to_date" >
+    <!-- onclcik submit user input to date.php and return results -->
     <button type="button" class="btn btn-danger"
      onclick="showDate(document.getElementById('from_date').value, document.getElementById('to_date').value)">Filter</button>
+    <!-- show all records from all.php -->
     <button type="button" class="btn btn-danger"
      onclick="showAll()">Reset</button>
   </form>
 </div>
 
 <br>
+<!-- Records echo will be shown here -->
 <div class="container">
   <div id="txtHint">Database info will be listed here...</div>
 </div>
@@ -76,6 +82,7 @@ function showDate(str1, str2) {
   xhttp.send();
 }
 
+//delete function
 function deleteID(id) {
   var xhttp;
   if (id == "") {
@@ -87,12 +94,13 @@ function deleteID(id) {
     if (this.readyState == 4 && this.status == 200) {
       console.log(id);
       document.getElementById("txtHint").innerHTML = this.responseText;
+      alert("Record deleted successfully");
     }
   };
   xhttp.open("GET", "delete.php?id=" + id , true);
   xhttp.send();
 }
-
+// edit function
 // var editName;
 // var editTime;
 // var editid;
